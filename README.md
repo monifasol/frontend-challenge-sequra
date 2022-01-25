@@ -3,7 +3,9 @@
 This project contains 3 sub project:
 
 - A prototype of a widget that shows the finantial options seQura offers to the user to pay his purchases in instalments. It also contains a link (more info) which opens a popup whith more information about the service. It's build in ReactJS.
+
 - An API to GET information about the credit agreements and to POST user events as the user interacts with the UI (provided by seQura). ExpressJS.
+
 - A simulation of a merchant's site where the widget will be integrated (provided by seQura). HTML, CSS, jQuery.
 
 
@@ -46,7 +48,7 @@ Example: `http://127.0.0.1:5500/merchant-site/product-page.html`
 
 - I draw the 3 icons myself in Sketch ot have them in .png and good quality.
 
-- I added tests, which I barely had experience with. I used testing-library from react, and tested mainly the DOM elements and their interactions with the user. This is a point where I'd loved to continue a lot longer, testing all the API calls, async code, and I would do it with "Mock Service Worker". I found courses and tutorials to follow, and I started doing a course in JEST... but it was a but out of the scope for this task. 
+- I added tests, which I barely had experience with. I used testing-library from react, and tested mainly the DOM elements and their interactions with the user. This is a point where I'd loved to continue a lot longer, testing all the API calls, async code, and I would do it with "Mock Service Worker". I found courses and tutorials to follow, and I started doing a course in JEST. 
 
 
 ## If I'm a merchant, how do I integrate it into my site?
