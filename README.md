@@ -15,24 +15,24 @@ Visit [API](https://github.com/facebook/create-react-app)
 
 ## Development and Feautures
 
-Built in ReactJS\
-2 components: Widget as a main component, and InformationBox for the popup information.\
-Parcel to make the build to integrate in other websites.\ 
+Built in ReactJS\  
+2 components: Widget as a main component, and InformationBox for the popup information.\  
+Parcel to make the build to integrate in other websites.\   
 SASS as CSS preprocessor.\
 Fully responsive.\
 
 
 ## Calls to API
 
-- When the component mounts first time (through a useEffect) populates the select of finantial options, sending a GET request to ```CreditAgreementAPI``` to get those finantial options available for the user. ```totalWithTax``` as a parameter indicating a product value.\
+- When the component mounts first time (through a useEffect) populates the select of finantial options, sending a GET request to ```CreditAgreementAPI``` to get those finantial options available for the user. ```totalWithTax``` as a parameter indicating a product value.
 
-```${API_URI}/credit_agreements?totalWithTax=${totalWithTax}```
+    ```${API_URI}/credit_agreements?totalWithTax=${totalWithTax}```
 
 - For each user's UI interaction, triggers a POST request to EventsAPI.
     - When user changes the selected financing value:
 
-    POST request to ```${API_URI}/events```
-    with bodyRequest ```{"context":"financingCostWidget", "type":"instalmentsOptionChanged", "selectedInstalment": { "selectedInstalment" : {"instalment_count": "3", instalment_amount: "50"}}}```
+        POST request to ```${API_URI}/events```
+        with bodyRequest ```{"context":"financingCostWidget", "type":"instalmentsOptionChanged", "selectedInstalment": { "selectedInstalment" : {"instalment_count": "3", instalment_amount: "50"}}}```
 
     - When user opens the popup, they type will be: ```"type":"instalmentsInfoOpen"```
 
@@ -55,9 +55,10 @@ Watches for changes in the scss files. When there is a change, sass compiles the
 #### `npm test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 #### `npm run build:widget`
 
-Using `parcel`, it makes a build to convert the React app in a small, optmized widget that will be easily embeddable on any website. See under `/widget` the resulted build which contains only `index.css` and `index.js`\
+Using `parcel`, it makes a build to convert the React app in a small, optmized widget that will be easily embeddable on any website.\
+See under `/widget` the resulted build which contains only `index.css` and `index.js`
 
