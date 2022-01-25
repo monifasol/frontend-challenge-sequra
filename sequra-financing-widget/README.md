@@ -10,15 +10,6 @@ Build an embeddable widget in React during a frontend technical challenge for Se
 - Run Widget: In the project directory `sequra-financing-widget`, run: `npm start`.  Open `localhost:3000` in the browser. 
 - Open Merchant's site in the browers to see the widget integrated (from the project directory `merchant-site`, open `product-page.html` in the browser.)
 
-
-## Development and Feautures
-
-Widget built in ReactJS, that contains two components, `<Widget />` as a main component, and `<InformationBox />` for the popup information.  
-Uses Parcel to make the build to integrate in other websites.   
-Uses SASS as CSS preprocessor.  
-It's fully responsive, it adapts well to any merchant site.  
-
-
 ## Communication between Widget and backend: Calls to API
 
 - When the component mounts first time (through a useEffect) populates the select of finantial options, sending a GET request to ```CreditAgreementAPI``` to get those finantial options available for the user. ```totalWithTax``` as a parameter indicating a product value.

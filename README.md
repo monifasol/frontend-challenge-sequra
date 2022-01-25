@@ -34,12 +34,21 @@ Example: `http://127.0.0.1:5500/merchant-site/product-page.html`
 
 ## Development and Feautures
 
-Project directory: `/sequra-financing-widget`  
+- Project directory: `/sequra-financing-widget`  
 
-Widget built in ReactJS, that contains two components, `<Widget />` as a main component, and `<InformationBox />` for the popup information.  
-Uses Parcel to make the build to integrate in other websites.   
-Uses SASS as CSS preprocessor.  
-It's fully responsive, it adapts well to any merchant site.  
+- Widget prototype built in ReactJS, which contains two components, `<Widget />` as a main component, and `<InformationBox />` for the popup information. I chose React because is a very light library, and for a widget that needs to be integrated into any merchant site, it's good to think about performance. Also, I love the fact that in React, you write plain JS.
+
+- SASS as CSS preprocessor. SASS helps the developer write code faster and cleaner. Thanks to the nesting, variables, functions,... even if this project was too small to explote all that, the nesting was enough to help me be faster and cleaner. I just love SASS. There's a task in package.json to watch for changes: `npm run watch:css`
+
+- The widget is fully responsive, it adapts well to any merchant site. It's built on relative measures, so that when it's found in another site, it will adapt to it. 
+
+- I used Parcel to make the build to integrate in other websites. It really optimizes the code to a level that with one .css and one .js file, you can run your widget anywhere. I created a special task for it in package-json, `npm run build:widget`.
+
+- The Popup appear with a small CSS transition. It appears smoothly over an overlay that changes the opacity of the background.
+
+- I draw the 3 icons myself in Sketch ot have them in .png and good quality.
+
+
 
 ## If I'm a merchant, how do I integrate it into my site?
 
