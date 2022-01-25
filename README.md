@@ -6,24 +6,26 @@ This project contains 3 sub project:
 - An API to GET information about the credit agreements and to POST user events as the user interacts with the UI. 
 - A simulation of a merchant's site where the widget will be integrated. 
 
-See [merchant's site with widget integrated](https://github.com/facebook/create-react-app).\
-See [Widget running local](https://github.com/facebook/create-react-app)\
-Visit [API](https://github.com/facebook/create-react-app)
 
+# Run them locally
 
-# Run it locally
-
-## Fist, run API
+## Fist, run the API
 
 In the project directory `api`, run: `npm start`
+
+Visit the [API](https://github.com/facebook/create-react-app)
 
 ## Then, run Widget
 
 In the project directory `sequra-financing-widget`, run: `npm start`
 
+See [Widget running local](https://github.com/facebook/create-react-app)\
+
 # Run Merchant's site to see the integration
 
 In the project directory `merchant-site`, open `product-page.html` in the browser.
+
+See [merchant's site with widget integrated](https://github.com/facebook/create-react-app).\
 
 
 # Details about SeQura Financing Widget
