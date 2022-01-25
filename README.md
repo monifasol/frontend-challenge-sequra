@@ -68,7 +68,7 @@ To place SeQura widget anywhere in your website, you will only need to follow th
 
 ## Communication between Widget and backend: Calls to API
 
-- When the component mounts first time (through a useEffect) populates the select of finantial options, sending a GET request to ```CreditAgreementAPI``` to get those finantial options available for the user. ```totalWithTax``` as a parameter indicating a product value.
+- When the component mounts the first time, populates the select of finantial options (through a useEffect in React), sending a GET request to ```CreditAgreementAPI``` to get those finantial options available for the user. Sends ```totalWithTax``` as a parameter indicating a product value.
 
     ```${API_URI}/credit_agreements?totalWithTax=${totalWithTax}```
 
@@ -78,9 +78,9 @@ To place SeQura widget anywhere in your website, you will only need to follow th
         POST request to ```${API_URI}/events```
         with bodyRequest ```{"context":"financingCostWidget", "type":"instalmentsOptionChanged", "selectedInstalment": { "selectedInstalment" : {"instalment_count": "3", instalment_amount: "50"}}}```
 
-    - When user opens the popup, then type will be: ```"type":"instalmentsInfoOpen"```
+    - When user opens the popup, type will be: ```"type":"instalmentsInfoOpen"```
 
-    - When user closes the popup, then type will be: ```"type":"instalmentsInfoClose"```
+    - When user closes the popup, type will be: ```"type":"instalmentsInfoClose"```
 
 
 ## Available Scripts
