@@ -16,21 +16,21 @@ const InformationBox = ( props ) => {
                 <span className='text'>
                     1. Eliges "Fracciona tu pago" al realizar tu pedido y pagas sólo la primera cuota.
                 </span>
-                <img src='../../img/step1.png' alt='Fracciona tu pago - paso 1'/>
+                <img src='https://raw.githubusercontent.com/monifasol/frontend-challenge-sequra/main/sequra-financing-widget/public/img/step1.png' alt='Fracciona tu pago - paso 1'/>
             </div>
 
             <div className='info-box-step'>
                 <span className='text'>
                     2. Recibes tu pedido.
                 </span>
-                <img src='../../img/step2.png' alt='Fracciona tu pago - paso 2'/>
+                <img src='https://raw.githubusercontent.com/monifasol/frontend-challenge-sequra/main/sequra-financing-widget/public/img/step2.png' alt='Fracciona tu pago - paso 2'/>
             </div>
 
             <div className='info-box-step'>
                 <span className='text'>
                     3. El resto de pagos se cargarán automáticamente a tu tarjeta.
                 </span>
-                <img src='../../img/step3.png' alt='Fracciona tu pago - paso 3'/>
+                <img src='https://raw.githubusercontent.com/monifasol/frontend-challenge-sequra/main/sequra-financing-widget/public/img/step3.png' alt='Fracciona tu pago - paso 3'/>
             </div>
 
             <p className='text-how-easy'>¡Así de simple!</p>

@@ -15,7 +15,7 @@
   "scripts": {
     "start": "sass src/index.scss:src/index.css && react-scripts start",
     "watch:css": "sass --watch src/index.scss:src/index.css",
-    "build:widget": "parcel build src/index.js --no-source-maps --dist-dir widget && cp -R public/img/ widget/img/",
+    "build:widget": "parcel build src/index.js --no-source-maps --dist-dir widget",
     "test": "react-scripts test"
   },
   "eslintConfig": {
