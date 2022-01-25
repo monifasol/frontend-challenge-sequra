@@ -13,15 +13,19 @@ This project contains 3 sub projects:
 
 ## Fist, run the API
 
-In the project directory `api`, run: `npm start`
+In the project directory `api`, run:   
+`npm install`  
+`npm start`  
 
 API runs in `localhost:8080`
 
-Example: `http://localhost:8080/credit_agreements?totalWithTax=15000`
+As an example, open in the browser: `http://localhost:8080/credit_agreements?totalWithTax=15000`
 
 ## Then, run Widget
 
-In the project directory `sequra-financing-widget`, run: `npm start`
+In the project directory `sequra-financing-widget`, run:   
+`npm install`  
+`npm start`  
 
 Open `localhost:3000` in the browser. 
 
