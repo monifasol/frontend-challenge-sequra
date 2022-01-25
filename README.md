@@ -46,7 +46,7 @@ Example: `http://127.0.0.1:5500/merchant-site/product-page.html`
 
 - The Popup appears with a small CSS transition. It appears smoothly over an overlay that changes the opacity of the background.
 
-- I draw the 3 icons myself in Sketch ot have them in .png and good quality.
+- I drew the 3 icons myself in Sketch to be able to use them as .png files and in good quality.
 
 - I added tests, which I barely had experience with. I used testing-library from react, and tested mainly the DOM elements and their interactions with the user. This is a point where I'd loved to continue a lot longer, testing all the API calls, async code, and I would do it with "Mock Service Worker". I found courses and tutorials to follow, and I started doing a course in JEST. 
 
