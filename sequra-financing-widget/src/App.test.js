@@ -107,6 +107,7 @@ describe('Widget contains a select that reacts to user interaction', () => {
   });
 });
 
+
 describe('If totalWithTax changes, the values of the select change too', () => {
   
   test('select`s default value is the first finantial option`s value', async () => {
@@ -168,8 +169,9 @@ describe('More info link reacts to user interaction', () => {
     expect(boxInfo).toBeInTheDocument();
   });
 
-  /*
+  /*  
   test('When user clicks the close button, popup closes', async () => {
+    
     await renderWidget();
 
     const linkMoreInfo = screen.getByTestId('moreInfoLink');
@@ -177,13 +179,13 @@ describe('More info link reacts to user interaction', () => {
 
     fireEvent.click(linkMoreInfo);
     fireEvent.click(screen.getByText('x'));
-    expect(popup).not.toHaveClass('show');
-  });
-  */
-
+    await waitFor(() => expect(popup).not.toHaveClass('show'));
+  }); */
+  
 });
 
-// Missing tests, that I will do using Mock Service Worker (msw) to simulate 
+
+// Missing tests, that I will do using the Mock Service Worker (msw) to simulate 
 // a sever and make calls to the API.
 
 // Test: when the user changes installment option, post request sent to API events with info:

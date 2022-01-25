@@ -87,8 +87,9 @@ Watches for changes in the scss files. When there is a change, sass compiles the
 
 #### `npm test`
 
-Launches the test runner.  
-So far, tests are focused on the DOM elements. Work in progress!  
+Launches the test runner.   
+To run the tests, the API should be running!! In the project directory `api`, run: `npm start`  
+So far, tests are focused on the DOM elements. Work in progress!    
 
 #### `npm run build:widget`
 
