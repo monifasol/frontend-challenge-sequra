@@ -6,7 +6,7 @@ This project contains 3 sub project:
 - A simulation of a merchant's site where the widget will be integrated. 
 
 See [merchant's site with widget integrated](https://github.com/facebook/create-react-app).\
-See [Widget running local](https://github.com/facebook/create-react-app)
+See [Widget running local](https://github.com/facebook/create-react-app)\
 Visit [API](https://github.com/facebook/create-react-app)
 
 
@@ -14,24 +14,27 @@ Visit [API](https://github.com/facebook/create-react-app)
 
 ## Development
 
-Built in React, contains 2 components: Widget as a main component, and InformationBox for the popup information. 
+Built in React, contains 2 components: Widget as a main component, and InformationBox for the popup information.\
+SASS as CSS preprocessor. Fully responsive.\
+Parcel to make the build to integrate in other websites.\ 
+
 
 
 ## Calls to API
 
-- When the component mounts first time, the select of finantial options is populated by sending a GET request to CreditAgreementAPI with totalWithTax as a parameter indicating a product value.\
+- When the component mounts first time (through a useEffect) populates the select of finantial options, sending a GET request to ```CreditAgreementAPI``` to get those finantial options available for the user. ```totalWithTax``` as a parameter indicating a product value.\
 
 ```${API_URI}/credit_agreements?totalWithTax=${totalWithTax}```
 
 - For each user's UI interaction, triggers a POST request to EventsAPI.
-- - When user changes the selected financing value:
+    - When user changes the selected financing value:
 
 POST request to ```${API_URI}/events```
 with bodyRequest ```{"context":"financingCostWidget", "type":"instalmentsOptionChanged", "selectedInstalment": { "selectedInstalment" : {"instalment_count": "3", instalment_amount: "50"}}}```
 
-- - When user opens the popup, they type will be: ```"type":"instalmentsInfoOpen"```
+    - When user opens the popup, they type will be: ```"type":"instalmentsInfoOpen"```
 
-- - When user closes the popup, they type will be: ```"type":"instalmentsInfoClose"```
+    - When user closes the popup, they type will be: ```"type":"instalmentsInfoClose"```
 
 
 
@@ -39,21 +42,21 @@ with bodyRequest ```{"context":"financingCostWidget", "type":"instalmentsOptionC
 
 In the project directory `sequra-financing-widget`, you can run:
 
-### `npm start`
+#### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `npm run watch:css`
+#### `npm run watch:css`
 
 Watches for changes in the scss files. When there is a change, sass compiles the scss file into css and the application reloads in the browser. 
 
-### `npm test`
+#### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.\
 
-### `npm run build:widget`
+#### `npm run build:widget`
 
 Using `parcel`, it makes a build to convert the React app in a small, optmized widget that will be easily embeddable on any website. See under `/widget` the resulted build which contains only `index.css` and `index.js`\
 
