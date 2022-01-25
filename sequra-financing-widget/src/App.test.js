@@ -107,7 +107,6 @@ describe('Widget contains a select that reacts to user interaction', () => {
   });
 });
 
-
 describe('If totalWithTax changes, the values of the select change too', () => {
   
   test('select`s default value is the first finantial option`s value', async () => {
@@ -183,7 +182,6 @@ describe('More info link reacts to user interaction', () => {
   */
 
 });
-
 
 // Missing tests, that I will do using the Mock Service Worker (msw) to simulate 
 // a sever and make calls to the API.
