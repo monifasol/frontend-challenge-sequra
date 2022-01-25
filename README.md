@@ -40,11 +40,11 @@ Example: `http://127.0.0.1:5500/merchant-site/product-page.html`
 
 - SASS as CSS preprocessor. SASS helps the developer write code faster and cleaner. Thanks to the nesting, variables, functions,... even if this project was too small to explote all that, the nesting was enough to help me be faster and cleaner. I just love SASS. There's a task in package.json to watch for changes: `npm run watch:css` that makes your life even easier. 
 
-- The widget is fully responsive, it adapts well to any merchant site. It's designed on relative measures, so that when it has to live in a different container, in any other wesbite, it will adapt to it and flow with the size. 
+- The widget is fully responsive, it adapts well to any merchant site. It's designed on relative measures, so that when it has to live in a different container, in any other website, it will adapt to it and flow with the size. 
 
 - I used Parcel to make the build to integrate in other websites. It really optimizes the code to a level that with one .css and one .js file, you can run your widget anywhere. I created a special task for it in package-json, `npm run build:widget`. I explain below how to integrate it in any merchant site.
 
-- The Popup appear with a small CSS transition. It appears smoothly over an overlay that changes the opacity of the background.
+- The Popup appears with a small CSS transition. It appears smoothly over an overlay that changes the opacity of the background.
 
 - I draw the 3 icons myself in Sketch ot have them in .png and good quality.
 
