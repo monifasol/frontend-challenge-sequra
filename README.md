@@ -1,6 +1,7 @@
-# SeQura Financing Widget
+# SeQura Frontend Challenge
 
 This project contains 3 sub project:
+
 - A widget built in React, that shows the finantial options seQura offers to the user to pay his purchases more comfortably. It also offers a more info link whith more information about the service which opens as a popup.
 - An API to GET information about the credit agreements and to POST user events as the user interacts with the UI. 
 - A simulation of a merchant's site where the widget will be integrated. 
@@ -12,12 +13,13 @@ Visit [API](https://github.com/facebook/create-react-app)
 
 # SeQura Financing Widget
 
-## Development
+## Development and Feautures
 
-Built in React, contains 2 components: Widget as a main component, and InformationBox for the popup information.\
-SASS as CSS preprocessor. Fully responsive.\
+Built in ReactJS\
+    - 2 components: Widget as a main component, and InformationBox for the popup information.\
 Parcel to make the build to integrate in other websites.\ 
-
+SASS as CSS preprocessor.\
+Fully responsive.\
 
 
 ## Calls to API
@@ -29,13 +31,12 @@ Parcel to make the build to integrate in other websites.\
 - For each user's UI interaction, triggers a POST request to EventsAPI.
     - When user changes the selected financing value:
 
-POST request to ```${API_URI}/events```
-with bodyRequest ```{"context":"financingCostWidget", "type":"instalmentsOptionChanged", "selectedInstalment": { "selectedInstalment" : {"instalment_count": "3", instalment_amount: "50"}}}```
+    POST request to ```${API_URI}/events```
+    with bodyRequest ```{"context":"financingCostWidget", "type":"instalmentsOptionChanged", "selectedInstalment": { "selectedInstalment" : {"instalment_count": "3", instalment_amount: "50"}}}```
 
     - When user opens the popup, they type will be: ```"type":"instalmentsInfoOpen"```
 
     - When user closes the popup, they type will be: ```"type":"instalmentsInfoClose"```
-
 
 
 ## Available Scripts
