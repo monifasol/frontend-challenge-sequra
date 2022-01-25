@@ -1,0 +1,134 @@
+.sequra-financing-widget {
+  border: solid 1px #5B9632;
+  margin-top: 20px;
+}
+
+.App {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.9em;
+  line-height: 1.5em;
+  width: 100%;
+}
+
+/* ================= CSS Widget finantial cost ============ */
+#overlay {
+  background-color: #fff;
+  height: 100vh;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: all 1s;
+  visibility: hidden;
+  width: 100vw;
+  z-index: 1;
+}
+#overlay.show {
+  opacity: 0.7;
+  visibility: visible;
+}
+
+select, option {
+  background-color: white;
+  border: solid 1px #555;
+  border-radius: 2px;
+  font-family: inherit;
+  font-size: 1em;
+  padding: 5px 10px;
+}
+
+.instalments-box {
+  height: fit-content;
+  padding: 20px;
+  position: relative;
+  width: 100%;
+}
+.instalments-box-select {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.instalments-box-select select.instalments-options {
+  margin-top: 20px;
+  cursor: pointer;
+}
+.instalments-box .more-info {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  text-decoration: underline;
+  top: 20px;
+}
+.instalments-box .more-info:hover {
+  color: grey;
+}
+
+/* ================= Popup ================= */
+.popup {
+  background-color: white;
+  border: solid 1px black;
+  border-radius: 4px;
+  height: fit-content;
+  padding: 40px 20px 20px 20px;
+  position: absolute;
+  opacity: 0;
+  top: 65px;
+  transition: all 1s;
+  visibility: hidden;
+  width: 350px;
+  z-index: 3;
+}
+.popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+.popup .close-popup {
+  background-color: #B7E294;
+  border: solid 1px #5B9632;
+  border-radius: 4px;
+  color: #333;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1em;
+  padding: 2px 6px 4px 7px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  text-align: center;
+}
+
+/* ================= Information Box (popup content) ============ */
+.info-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
+  width: 100%;
+}
+.info-box-header {
+  border-bottom: solid 1px black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 16px 16px 16px;
+}
+.info-box-step {
+  display: flex;
+  margin-top: 10px;
+}
+.info-box-step span.text {
+  margin-right: 20px;
+  width: 80%;
+}
+.info-box-step img {
+  height: 60px;
+  width: 75px;
+}
+.info-box .text-how-easy {
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=index.css.map */
