@@ -11,7 +11,22 @@ See [Widget running local](https://github.com/facebook/create-react-app)\
 Visit [API](https://github.com/facebook/create-react-app)
 
 
-# SeQura Financing Widget
+# Run it locally
+
+## Fist, run API
+
+In the project directory `api`, run: `npm start`
+
+## Then, run Widget
+
+In the project directory `sequra-financing-widget`, run: `npm start`
+
+# Run Merchant's site to see the integration
+
+In the project directory `merchant-site`, open `product-page.html` in the browser.
+
+
+# Details about SeQura Financing Widget
 
 ## Development and Feautures
 
