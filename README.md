@@ -23,8 +23,6 @@ In the project directory `sequra-financing-widget`, run: `npm start`
 
 Open `localhost:3000` in the browser. 
 
-[Widget running local](https://localhost:3000)
-
 # Open Merchant's site in the browser to see the widget integrated
 
 From the project directory `merchant-site`, open `product-page.html` in the browser.
