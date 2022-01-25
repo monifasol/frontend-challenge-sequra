@@ -1,0 +1,43 @@
+{
+  "name": "sequra-financing-widget",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5",
+    "@testing-library/react": "^12",
+    "@testing-library/user-event": "^13",
+    "axios": "^0",
+    "react": "^17",
+    "react-dom": "^17",
+    "react-scripts": "5",
+    "sass": "^1"
+  },
+  "scripts": {
+    "start": "sass src/index.scss:src/index.css && react-scripts start",
+    "watch:css": "sass --watch src/index.scss:src/index.css",
+    "build:widget": "parcel build src/index.js --no-source-maps --dist-dir widget && cp -R public/img/ widget/img/",
+    "test": "react-scripts test"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^8",
+    "parcel": "^2"
+  }
+}
