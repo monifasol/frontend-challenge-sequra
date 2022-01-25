@@ -13,30 +13,34 @@ This project contains 3 sub project:
 
 In the project directory `api`, run: `npm start`
 
-Visit the [API](https://github.com/facebook/create-react-app)
+API runs in `localhost:8080`
+
+Example: `http://localhost:8080/credit_agreements?totalWithTax=15000`
 
 ## Then, run Widget
 
 In the project directory `sequra-financing-widget`, run: `npm start`
 
-See [Widget running local](https://github.com/facebook/create-react-app)\
+Open `localhost:3000` in the browser. 
 
-# Run Merchant's site to see the integration
+[Widget running local](https://localhost:3000)
+
+# Run Merchant's site to see the widget integrated
 
 In the project directory `merchant-site`, open `product-page.html` in the browser.
 
-See [merchant's site with widget integrated](https://github.com/facebook/create-react-app).\
+See [merchant's site with widget integrated](http://127.0.0.1:5500/merchant-site/product-page.html).
 
 
 # Details about SeQura Financing Widget
 
 ## Development and Feautures
 
-Built in ReactJS\  
-2 components: Widget as a main component, and InformationBox for the popup information.\  
-Parcel to make the build to integrate in other websites.\   
-SASS as CSS preprocessor.\
-Fully responsive.\
+Built in ReactJS  
+2 components: Widget as a main component, and InformationBox for the popup information.  
+Parcel to make the build to integrate in other websites.   
+SASS as CSS preprocessor.  
+Fully responsive.  
 
 
 ## Calls to API
