@@ -1,6 +1,6 @@
 # SeQura Frontend Challenge
 
-This project contains 3 sub project:
+This project contains 3 sub projects:
 
 - A prototype of a widget that shows the finantial options seQura offers to the user to pay his purchases in instalments. It also contains a link (more info) which opens a popup whith more information about the service. It's build in ReactJS.
 
@@ -32,7 +32,7 @@ From the project directory `merchant-site`, open `product-page.html` in the brow
 Example: `http://127.0.0.1:5500/merchant-site/product-page.html`
 
 
-# Development and Feautures
+# Development and Features
 
 - Project directory: `/sequra-financing-widget`  
 
