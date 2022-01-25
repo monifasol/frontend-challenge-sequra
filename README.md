@@ -16,7 +16,7 @@ Visit [API](https://github.com/facebook/create-react-app)
 ## Development and Feautures
 
 Built in ReactJS\
-    - 2 components: Widget as a main component, and InformationBox for the popup information.\
+2 components: Widget as a main component, and InformationBox for the popup information.\
 Parcel to make the build to integrate in other websites.\ 
 SASS as CSS preprocessor.\
 Fully responsive.\
