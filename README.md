@@ -45,9 +45,9 @@ It's fully responsive, it adapts well to any merchant site.
 
 To place SeQura widget anywhere in your website, you will only need to follow these steps:
 
-    - Add these 3 lines in the code whenever you want to add the widget. 
-    - In the third line, replace PRICE by the total price with taxes of the product. (Note that the format of PRICE is: for “150 euros” would be “15000”, or “98,75 euros” would be “9875”.)
-    - If you want to add more than 1 widget, duplicate the 3rd line.
+- Add these 3 lines in the code whenever you want to add the widget. 
+- In the third line, replace PRICE by the total price with taxes of the product. (Note that the format of PRICE is: for “150 euros” would be “15000”, or “98,75 euros” would be “9875”.)
+- If you want to add more than 1 widget, duplicate the 3rd line.
 
     ```
     <link href="<URL-SEQURA-WIDGET>/index.css" rel="stylesheet" />
