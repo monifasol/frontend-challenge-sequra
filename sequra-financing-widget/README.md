@@ -51,8 +51,8 @@ Watches for changes in the scss files. When there is a change, sass compiles the
 
 #### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner.  
+So far, tests are focused on the DOM elements. Work in progress!  
 
 #### `npm run build:widget`
 

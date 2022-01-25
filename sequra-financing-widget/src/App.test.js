@@ -183,7 +183,7 @@ describe('More info link reacts to user interaction', () => {
 
 });
 
-// Missing tests, that I will do using the Mock Service Worker (msw) to simulate 
+// Missing tests, that I will do using Mock Service Worker (msw) to simulate 
 // a sever and make calls to the API.
 
 // Test: when the user changes installment option, post request sent to API events with info:

@@ -2,9 +2,9 @@
 
 This project contains 3 sub project:
 
-- A widget built in React, that shows the finantial options seQura offers to the user to pay his purchases more comfortably. It also offers a more info link whith more information about the service which opens as a popup.
-- An API to GET information about the credit agreements and to POST user events as the user interacts with the UI. 
-- A simulation of a merchant's site where the widget will be integrated. 
+- A prototype of a widget that shows the finantial options seQura offers to the user to pay his purchases in instalments. It also contains a link (more info) which opens a popup whith more information about the service. It's build in ReactJS.
+- An API to GET information about the credit agreements and to POST user events as the user interacts with the UI (provided by seQura). ExpressJS.
+- A simulation of a merchant's site where the widget will be integrated (provided by seQura). HTML, CSS, jQuery.
 
 
 # Run them locally
