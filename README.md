@@ -67,9 +67,9 @@ To place SeQura widget anywhere in your website, you will only need to follow th
         POST request to ```${API_URI}/events```
         with bodyRequest ```{"context":"financingCostWidget", "type":"instalmentsOptionChanged", "selectedInstalment": { "selectedInstalment" : {"instalment_count": "3", instalment_amount: "50"}}}```
 
-    - When user opens the popup, they type will be: ```"type":"instalmentsInfoOpen"```
+    - When user opens the popup, then type will be: ```"type":"instalmentsInfoOpen"```
 
-    - When user closes the popup, they type will be: ```"type":"instalmentsInfoClose"```
+    - When user closes the popup, then type will be: ```"type":"instalmentsInfoClose"```
 
 
 ## Available Scripts
