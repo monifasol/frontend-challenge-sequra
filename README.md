@@ -56,6 +56,7 @@ Example: `http://127.0.0.1:5500/merchant-site/product-page.html`
 To place SeQura widget anywhere in your website, you will only need to follow these steps:
 
 - Add these 3 lines in the code whenever you want to add the widget. 
+
     ```
     <link href="<URL-SEQURA-WIDGET>/index.css" rel="stylesheet" />
     <script src="<URL-SEQURA-WIDGET>/index.js"></script>
