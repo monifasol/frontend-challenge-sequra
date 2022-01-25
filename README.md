@@ -25,25 +25,24 @@ Open `localhost:3000` in the browser.
 
 [Widget running local](https://localhost:3000)
 
-# Run Merchant's site to see the widget integrated
+# Open Merchant's site in the browser to see the widget integrated
 
-In the project directory `merchant-site`, open `product-page.html` in the browser.
+From the project directory `merchant-site`, open `product-page.html` in the browser.
 
-See [merchant's site with widget integrated](http://127.0.0.1:5500/merchant-site/product-page.html).
+Example: `http://127.0.0.1:5500/merchant-site/product-page.html`
 
 
-# Details about SeQura Financing Widget
+# Details of SeQura Financing Widget
 
 ## Development and Feautures
 
-Built in ReactJS  
-2 components: Widget as a main component, and InformationBox for the popup information.  
-Parcel to make the build to integrate in other websites.   
-SASS as CSS preprocessor.  
-Fully responsive.  
+Widget built in ReactJS, that contains two components, `<Widget />` as a main component, and `<InformationBox />` for the popup information.  
+Uses Parcel to make the build to integrate in other websites.   
+Uses SASS as CSS preprocessor.  
+It's fully responsive, it adapts well to any merchant site.  
 
 
-## Calls to API
+## Communication between Widget and backend: Calls to API
 
 - When the component mounts first time (through a useEffect) populates the select of finantial options, sending a GET request to ```CreditAgreementAPI``` to get those finantial options available for the user. ```totalWithTax``` as a parameter indicating a product value.
 
