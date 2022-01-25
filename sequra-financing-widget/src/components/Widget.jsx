@@ -82,14 +82,11 @@ const Widget = ( {totalWithTax} ) => {
     const togglePopup = () => {
 
         const popup = document.getElementById('popupInfo')
-        if (popup) popup.classList.toggle("show")
-
         const overlay = document.getElementById("overlay")
 
-        if (overlay) {
-            overlay.classList.toggle("show")
-        }
-
+        if (overlay) overlay.classList.toggle("show")
+        if (popup) popup.classList.toggle("show")
+        
     }
 
     return (
