@@ -46,7 +46,7 @@ Example: `http://127.0.0.1:5500/merchant-site/product-page.html`
 
 - I draw the 3 icons myself in Sketch ot have them in .png and good quality.
 
-- I added tests, which I had never done before so I dug on it as much as I could. I used testing-library from react, and tested mainly the DOM elements and their interactions with the user. This is a point where I'd loved to continue a lot longer, testing all the API calls, async code, and I would do it with "Mock Service Worker". I found courses and tutorials to follow, and I started doing a course in JEST... but it was a but out of the scope for this task. 
+- I added tests, which I barely had experience with. I used testing-library from react, and tested mainly the DOM elements and their interactions with the user. This is a point where I'd loved to continue a lot longer, testing all the API calls, async code, and I would do it with "Mock Service Worker". I found courses and tutorials to follow, and I started doing a course in JEST... but it was a but out of the scope for this task. 
 
 
 ## If I'm a merchant, how do I integrate it into my site?
