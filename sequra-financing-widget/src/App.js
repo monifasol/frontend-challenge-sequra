@@ -1,10 +1,10 @@
 import Widget from './components/Widget.jsx'
 
-function App( {totalWithTax} ) {
+function App( {totalWithTax, widgetId} ) {
   return (
     <div className="App">  
       <div id="overlay" data-testid="overlay"></div>
-      <Widget totalWithTax={totalWithTax} />
+      <Widget totalWithTax={totalWithTax} widgetId={widgetId} />
     </div>
   );
 }

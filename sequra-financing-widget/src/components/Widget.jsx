@@ -3,7 +3,7 @@ import axios from "axios"
 import InformationBox from './InformationBox';
 
 
-const Widget = ( {totalWithTax} ) => {
+const Widget = ( {totalWithTax, widgetId} ) => {
 
     const [ instalmentsOptions, setInstalmentsOptions ] = useState([])
     const [ monthlyFee, setMonthlyFee ] = useState("")
@@ -80,7 +80,7 @@ const Widget = ( {totalWithTax} ) => {
 
     const togglePopup = () => {
 
-        const popup = document.getElementById('popupInfo')
+        const popup = document.getElementById(`popupInfo${widgetId}`)
         const overlay = document.getElementById("overlay")
 
         if (overlay) overlay.classList.toggle("show")
@@ -90,9 +90,9 @@ const Widget = ( {totalWithTax} ) => {
 
     return (
         <>
-            <div className="popup" id="popupInfo" data-testid='popup'>
+            <div className="popup" id={`popupInfo${widgetId}`} data-testid='popup'>
                 <span className="close-popup" onClick={ () => handleEventPopup(false) }>x</span>
-                <InformationBox monthlyFee={monthlyFee} selectedInstalment={selectedInstalment}/> 
+                <InformationBox monthlyFee={monthlyFee} selectedInstalment={selectedInstalment} /> 
             </div>
 
             <div className='instalments-box'>

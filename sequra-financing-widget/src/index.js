@@ -13,7 +13,7 @@ window.onload = () => {
   widgetDivs.forEach( (div) => {
     ReactDOM.render(
       <React.StrictMode>
-        <App totalWithTax={ div.dataset.totalWithTax }/>
+        <App totalWithTax={ div.dataset.totalWithTax } widgetId={div.id} />
       </React.StrictMode>,
         div
     );
