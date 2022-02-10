@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   $("ul.menu-items > li").on("click", function() {
     $("ul.menu-items > li").removeClass("active");
     $(this).addClass("active");
@@ -10,6 +11,7 @@ $(document).ready(function() {
     $("." + clase).removeClass("active");
     $(this).addClass("active");
     $("#product-price").html($(this).attr("data-price"));
+    updatePriceWidget();
   });
 
   $(".btn-minus").on("click", function() {
@@ -22,6 +24,7 @@ $(document).ready(function() {
     } else {
       $(".section > div > input").val("1");
     }
+    updateTotalPrice();
   });
 
   $(".btn-plus").on("click", function() {
@@ -31,5 +34,32 @@ $(document).ready(function() {
     } else {
       $(".section > div > input").val("1");
     }
+    updateTotalPrice();
   });
+
+  const priceElement = document.querySelector("#product-price")
+
+  const getPrice = (price) => {
+    const priceValue = price.slice(0, price.indexOf(' ')).replace(',', '.')
+    const priceNumber = parseFloat(priceValue).toFixed(2)
+    return priceNumber
+  }
+  
+  const updateTotalPrice = () => {
+    const originalPrice = getPrice(document.querySelector(".attr2.active").dataset.price)
+
+    const productQuantity = document.querySelector("#productQuantity").value
+    const total = (originalPrice * parseInt(productQuantity)).toFixed(2).toString().replace('.', ',')
+
+    priceElement.textContent = `${total} €`
+    updatePriceWidget();
+  }
+  
+  const updatePriceWidget = () => {
+    const widgetElement = document.querySelector("[data-total-with-tax]")
+    widgetElement.dataset.totalWithTax = getPrice(priceElement.textContent) * 100
+  }
+  
+  updatePriceWidget()
+
 });
