@@ -1,10 +1,7 @@
 import React from 'react'
 
-const InformationBox = ( props ) => {
+const InformationBox = ( { selectedInstalment } ) => {
 
-
-    const { monthlyFee, selectedInstalment } = props
-    
     return (
         <div className='info-box'>
 
@@ -43,7 +40,7 @@ const InformationBox = ( props ) => {
 
             <p>
                 Además, en el importe mostrado ya se incluye la cuota única mensual
-                de {`${monthlyFee}/mes`}, por lo que no tendrás ninguna sorpresa.
+                de {`${selectedInstalment.instalment_fee && selectedInstalment.instalment_fee.string}/mes`}, por lo que no tendrás ninguna sorpresa.
             </p>
 
         </div>

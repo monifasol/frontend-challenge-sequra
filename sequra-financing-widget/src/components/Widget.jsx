@@ -6,40 +6,58 @@ import InformationBox from './InformationBox';
 const Widget = ( {totalWithTax, widgetId} ) => {
 
     const [ instalmentsOptions, setInstalmentsOptions ] = useState([])
-    const [ monthlyFee, setMonthlyFee ] = useState("")
     const [ selectedInstalment, setSelectedInstalment ] = useState({})
     
     const API_URI = process.env.REACT_APP_API_URL;
-    const apiURL = `${API_URI}/credit_agreements?totalWithTax=${totalWithTax}`
+
+    const priceElement = document.querySelector(`#${widgetId}`)
+
+    // event that will be triggered in the merchant site.
+    const priceChangedEvent = new Event('pricechanged', {
+        bubbles: false,
+        cancelable: true,
+        composed: false
+    })
+
+    // priceElement.dispatchEvent(priceChangedEvent) ==> in the merchant site
 
     // Set InstalmentsOptions when component renders the first time
     useEffect( ()=> {
+        updateSelectInstalments()
 
-        axios
-            .get(apiURL)
-            .then((response) => {
-                const instalmentsOpt = [...response.data]
-                setInstalmentsOptions(instalmentsOpt)
-                setSelectedInstalment(instalmentsOpt[0])
-                setMonthlyFee(instalmentsOpt[0].instalment_fee.string)      // first instalment as default (the one selected on the dropdown)
-            })
-            .catch((error) => {
-                console.log(error)
-            });
+        priceElement.addEventListener("pricechanged", (e) => {
+            console.log("********* I'm listening on my custom event!!!")
+            updateSelectInstalments()
+        });
 
-        return () => {
-            // cleanup function
-            setInstalmentsOptions([])
-            setMonthlyFee("")
-        }
-
-    }, [totalWithTax, apiURL]);     // re-run when the price changes
+    }, []);
 
     // when selectedInstalment changes, send POST request to EventsAPI
     useEffect( ()=> {
         if (Object.keys(selectedInstalment).length !== 0)
             sendPostReqEventAPI("instalmentsOptionChanged")
     }, [selectedInstalment]);  
+    
+
+    const updateSelectInstalments = () => {
+        
+        const apiURL = `${API_URI}/credit_agreements?totalWithTax=${totalWithTax}`
+
+        axios
+            .get(apiURL)
+            .then((response) => {
+                const instalmentsOpt = [...response.data]
+                setInstalmentsOptions(instalmentsOpt)
+                setSelectedInstalment(instalmentsOpt[0])            // first instalment as default (the one selected on the dropdown)
+            })
+            .catch((error) => { console.log(error) });
+
+        return () => {
+            // cleanup function
+            setInstalmentsOptions([])
+            setSelectedInstalment({})
+        }
+    }
 
     const sendPostReqEventAPI = (typeEvent) => {
         
@@ -55,8 +73,7 @@ const Widget = ( {totalWithTax, widgetId} ) => {
         axios
             .post(`${API_URI}/events`, { bodyRequest })
             .then((response) => {
-                console.log(`POST request successful with response: ${response.status}`)
-                console.log(`Tracking info: POST request information sent to events API: ${bodyRequest}`)
+                console.log(`POST request to events API successful with response: ${response.status}`)
             })
             .catch((error) => {
                 console.log(`POST request unsuccessful, error: ${error}`)
@@ -64,7 +81,6 @@ const Widget = ( {totalWithTax, widgetId} ) => {
     }
 
     const handleEventPopup = (popupIsOpened) => {
-
         const typeEvent = popupIsOpened ? "moreInfoPopupOpened" : "moreInfoPopupClosed"
         sendPostReqEventAPI(typeEvent)
         togglePopup()
@@ -73,9 +89,7 @@ const Widget = ( {totalWithTax, widgetId} ) => {
     const handleChangeInstalmentOpt = (count) => {
 
         const newSelectedInstalment = instalmentsOptions.filter( option => option.instalment_count.toString() === count )[0]
-
         setSelectedInstalment(newSelectedInstalment)
-        setMonthlyFee(selectedInstalment.instalment_fee.string)
     }
 
     const togglePopup = () => {
@@ -90,9 +104,10 @@ const Widget = ( {totalWithTax, widgetId} ) => {
 
     return (
         <>
+            
             <div className="popup" id={`popupInfo${widgetId}`} data-testid='popup'>
                 <span className="close-popup" onClick={ () => handleEventPopup(false) }>x</span>
-                <InformationBox monthlyFee={monthlyFee} selectedInstalment={selectedInstalment} /> 
+                <InformationBox selectedInstalment={selectedInstalment} /> 
             </div>
 
             <div className='instalments-box'>
