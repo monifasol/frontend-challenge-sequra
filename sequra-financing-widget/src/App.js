@@ -1,4 +1,5 @@
-import Widget from './components/Widget.jsx'
+import React from 'react';
+import Widget from './components/Widget.jsx';
 
 function App( {totalWithTax, widgetId} ) {
   return (

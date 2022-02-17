@@ -37,29 +37,48 @@ $(document).ready(function() {
     updateTotalPrice();
   });
 
-  const priceElement = document.querySelector("#product-price")
+  // event that will be triggered
+  const priceChangedEvent = new Event('pricechanged', {
+      bubbles: false,
+      cancelable: true,
+      composed: false
+  })
+  
+  const priceElement = document.querySelector('#product-price');
+  const totalPriceElement = document.querySelector('[data-total-price]');
 
-  const getPrice = (price) => {
-    const priceValue = price.slice(0, price.indexOf(' ')).replace(',', '.')
-    const priceNumber = parseFloat(priceValue).toFixed(2)
-    return priceNumber
+  const getPrice = (priceString) => {
+    const priceValue = priceString.slice(0, priceString.indexOf(' ')).replace(',', '.');
+    const priceNumber = parseFloat(priceValue).toFixed(2);
+    return priceNumber;
   }
   
   const updateTotalPrice = () => {
-    const originalPrice = getPrice(document.querySelector(".attr2.active").dataset.price)
+    // quantity changed!
 
-    const productQuantity = document.querySelector("#productQuantity").value
-    const total = (originalPrice * parseInt(productQuantity)).toFixed(2).toString().replace('.', ',')
+    const priceString = document.querySelector(".attr2.active").dataset.price;
+    const originalPrice = getPrice(priceString);
 
-    priceElement.textContent = `${total} €`
+    const productQuantity = document.querySelector("#productQuantity").value;
+    const total = (originalPrice * parseInt(productQuantity)).toFixed(2).toString().replace('.', ',');
+
+    totalPriceElement.textContent = `${total} €`;
     updatePriceWidget();
   }
   
   const updatePriceWidget = () => {
-    const widgetElement = document.querySelector("[data-total-with-tax]")
-    widgetElement.dataset.totalWithTax = getPrice(priceElement.textContent) * 100
+
+    // Since the price changed, I dispatch the event from my widget element
+    const widgetElement = document.querySelector("[data-total-with-tax]");
+    widgetElement.dispatchEvent(priceChangedEvent);
+
+    // update widget totalWithTax, so that the widget will be able to read the new price
+    widgetElement.dataset.totalWithTax = getPrice(totalPriceElement.textContent) * 100;
   }
   
-  updatePriceWidget()
+  // I init total price with the product price
+  totalPriceElement.textContent = priceElement.textContent;
 
+  updatePriceWidget();
+      
 });
