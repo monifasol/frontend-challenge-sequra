@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^5",
     "@testing-library/react": "^12",
     "@testing-library/user-event": "^13",
-    "axios": "^0",
+    "axios": "^0.21",
     "eslint-plugin-jsx": "^0.1.0",
     "react": "^17",
     "react-dom": "^17",

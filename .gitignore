@@ -2,6 +2,7 @@
 
 # dependencies
 sequra-financing-widget/node_modules
+sequra-financing-widget/package-lock.json
 
 # parcel 
 sequra-financing-widget/.cache
