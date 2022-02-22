@@ -1,121 +1,134 @@
-import { React, useState, useEffect } from 'react'
-import axios from "axios"
+import { React, useState, useEffect } from 'react';
+import axios from 'axios';
 import InformationBox from './InformationBox';
 
+const API_URI = process.env.REACT_APP_API_URL;
 
-const Widget = ( {totalWithTax} ) => {
+const Widget = ( {totalWithTax, widgetId} ) => {
 
-    const [ instalmentsOptions, setInstalmentsOptions ] = useState([])
-    const [ monthlyFee, setMonthlyFee ] = useState("")
-    const API_URI = process.env.REACT_APP_API_URL;
-    const apiURL = `${API_URI}/credit_agreements?totalWithTax=${totalWithTax}`
+  const [ instalmentsOptions, setInstalmentsOptions ] = useState([]);
+  const [ selectedInstalment, setSelectedInstalment ] = useState({});
+  //const [ colorScheme, setColorScheme ] = useState('default');
+    
+  const priceElement = document.querySelector(`#${widgetId}`);
 
-    // Set InstalmentsOptions when component renders the first time
-    useEffect( ()=> {
+  // Set InstalmentsOptions when component renders the first time
+  useEffect( ()=> {
+    updateSelectInstalments(totalWithTax);
+  }, []);
 
-        axios
-            .get(apiURL)
-            .then((response) => {
-                const instalmentsOpt = [...response.data]
-                setInstalmentsOptions(instalmentsOpt)
-                setMonthlyFee(instalmentsOpt[0].instalment_fee.string)      // first instalment as default (the one selected on the dropdown)
-            })
-            .catch((error) => {
-                console.log(error)
-            });
+  // event "pricechanged" defined in (and dispatched from) Merchant Site!
+  priceElement.addEventListener('pricechanged', (e) => {
+    // e.stopPropagation() was still firing many, many events!
+    e.stopImmediatePropagation();        
+    const newPrice = priceElement.dataset.totalWithTax;
+    updateSelectInstalments(newPrice);
+  });
 
-        return () => {
-            // cleanup function
-            setInstalmentsOptions([])
-            setMonthlyFee("")
-        }
-
-    }, [totalWithTax, apiURL]);     // re-run when the price changes
-
-    const getSelectedInstalment = () => {
-
-        // Get current selected instalment option
-        let instalmentCount = document.getElementById('selectInstalmentOpt').value
-
-        // Filter through the instalmentsOptions to get the one the user selected
-        return instalmentsOptions.filter( option => option.instalment_count.toString() === instalmentCount )[0]
-
+  // when selectedInstalment changes, send POST request to EventsAPI
+  useEffect( ()=> {
+    if (Object.keys(selectedInstalment).length !== 0) {
+      sendPostReqEventAPI('instalmentsOptionChanged'); 
     }
+  }, [selectedInstalment]);
+    
 
-    const sendPostReqEventAPI = (typeEvent) => {
-
-        const selectedInstalment = getSelectedInstalment()
+  const updateSelectInstalments = (price) => {
         
-        const bodyRequest = { 
-            "context": "financingCostWidget", 
-            "type": typeEvent, 
-            "selectedInstalment": { 
-                "instalment_count": selectedInstalment ? selectedInstalment.instalment_count : 0,
-                "instalment_amount": selectedInstalment ? selectedInstalment.instalment_amount.value : 0,
-            }
-        }       
+    axios
+      .get(`${API_URI}/credit_agreements?totalWithTax=${price}`)
+      .then((response) => {
+        const instalmentsOpt = [...response.data];
+        setInstalmentsOptions(instalmentsOpt);
+        setSelectedInstalment(instalmentsOpt[0]);            // first instalment as default (the one selected on the dropdown)
+      })
+      .catch((error) => { console.log(error); });
 
-        axios
-            .post(`${API_URI}/events`, { bodyRequest })
-            .then((response) => {
-                console.log(`POST request successful with response: ${response.status}`)
-                console.log("Tracking info: POST request information sent to events API: ", bodyRequest)
-            })
-            .catch((error) => {
-                console.log(`POST request unsuccessful, error: ${error}`)
-            });
-    }
+    return () => {
+      // cleanup function
+      setInstalmentsOptions([]);
+      setSelectedInstalment({});
+    };
+  };
 
-    const handleEventPopup = (popupIsOpened) => {
-
-        const typeEvent = popupIsOpened ? "moreInfoPopupOpened" : "moreInfoPopupClosed"
-        sendPostReqEventAPI(typeEvent)
-        togglePopup()
-    }
-
-    const handleChangeInstalmentOpt = () => {
-
-        sendPostReqEventAPI("instalmentsOptionChanged")
-        setMonthlyFee(getSelectedInstalment().instalment_fee.string)
-    }
-
-    const togglePopup = () => {
-
-        const popup = document.getElementById('popupInfo')
-        const overlay = document.getElementById("overlay")
-
-        if (overlay) overlay.classList.toggle("show")
-        if (popup) popup.classList.toggle("show")
+  const sendPostReqEventAPI = (typeEvent) => {
         
-    }
+    const bodyRequest = { 
+      'context': 'financingCostWidget', 
+      'type': typeEvent, 
+      'selectedInstalment': { 
+        'instalment_count': selectedInstalment ? selectedInstalment.instalment_count : 0,
+        'instalment_amount': selectedInstalment ? selectedInstalment.instalment_amount.value : 0,
+      }
+    };       
 
-    return (
-        <>
-            <div className="popup" id="popupInfo" data-testid='popup'>
-                <span className="close-popup" onClick={ () => handleEventPopup(false) }>x</span>
-                <InformationBox monthlyFee={monthlyFee} /> 
-            </div>
+    axios
+      .post(`${API_URI}/events`, { bodyRequest })
+      .then((response) => {
+        console.log(`POST request to events API successful with response: ${response.status}`);
+      })
+      .catch((error) => {
+        console.log(`POST request unsuccessful, error: ${error}`);
+      });
+  };
 
-            <div className='instalments-box'>
+  const handleEventPopup = (popupIsOpened) => {
+    const typeEvent = popupIsOpened ? 'moreInfoPopupOpened' : 'moreInfoPopupClosed';
+    sendPostReqEventAPI(typeEvent);
+    togglePopup();
+  };
 
-                <span className="more-info" data-testid='moreInfoLink' onClick={ () => handleEventPopup(true) }>más info</span>
+  const handleChangeInstalmentOpt = (count) => {
 
-                <div className='instalments-box-select'>
-                    <label htmlFor='selectInstalmentOpt'>Págalo en</label>
-                    
-                    <select className='instalments-options' id='selectInstalmentOpt' data-testid='selectInstalments' onChange={ (e) => handleChangeInstalmentOpt(e.target.value) }>
-                        { instalmentsOptions.map( (option, i) => {
-                            return (
-                                <option value={option.instalment_count} key={i} data-testid="selectOption">
-                                    {`${option.instalment_count} cuotas de ${option.instalment_amount.string}/mes`}
-                                </option>
-                            )
-                        }) }                               
-                    </select>
-                </div>
-            </div>
-        </>
-    )
-}
+    const newSelectedInstalment = instalmentsOptions.filter( option => option.instalment_count.toString() === count )[0];
+    setSelectedInstalment(newSelectedInstalment);
+  };
 
-export default Widget
+  const togglePopup = () => {
+
+    const popup = document.getElementById(`popupInfo${widgetId}`);
+    const overlay = document.getElementById('overlay');
+
+    if (overlay) { overlay.classList.toggle('show'); }
+    if (popup) { popup.classList.toggle('show'); }
+
+  };
+
+  return (
+    <>
+            
+      <div className="popup" id={`popupInfo${widgetId}`} data-testid='popup'>
+        <span className="close-popup" onClick={ () => handleEventPopup(false) }>x</span>
+        <InformationBox selectedInstalment={selectedInstalment} /> 
+      </div>
+
+      <div className='instalments-box'>
+
+        <div className='flex-top-widget'>
+          <label htmlFor='selectInstalmentOpt' className='label-select'>Págalo en</label>
+          
+          <div className='color-selection-wrapper'>
+            <div className='color-selection lightgreen' data-color='lightgreen'></div>
+            <div className='color-selection coral' data-color='coral'></div>
+            <div className='color-selection lightblue' data-color='lightblue'></div>
+          </div>
+
+          <span className="more-info" data-testid='moreInfoLink' onClick={ () => handleEventPopup(true) }>más info</span>
+        </div>
+
+        <select className='instalments-options' id='selectInstalmentOpt' data-testid='selectInstalments' onChange={ (e) => handleChangeInstalmentOpt(e.target.value) }>
+          { instalmentsOptions.map( (option, i) => {
+            return (
+              <option value={option.instalment_count} key={i} data-testid="selectOption">
+                {`${option.instalment_count} cuotas de ${option.instalment_amount.string}/mes`}
+              </option>
+            );
+          }) }                               
+        </select>
+
+      </div>
+    </>
+  );
+};
+
+export default Widget;
