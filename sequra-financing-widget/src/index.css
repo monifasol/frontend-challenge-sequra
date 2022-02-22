@@ -45,25 +45,51 @@ select, option {
   padding: 20px;
   position: relative;
   width: 100%;
-}
-.instalments-box-select {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.instalments-box-select select.instalments-options {
+.instalments-box .flex-top-widget {
+  display: flex;
+}
+.instalments-box .flex-top-widget .label-select {
+  flex: 80% 1 1;
+}
+.instalments-box .flex-top-widget .more-info {
+  cursor: pointer;
+  flex-shrink: 0;
+  text-decoration: underline;
+}
+.instalments-box .flex-top-widget .more-info:hover {
+  color: grey;
+}
+.instalments-box .flex-top-widget .color-selection-wrapper {
+  width: fit-content;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0px 10px;
+}
+.instalments-box .flex-top-widget .color-selection-wrapper .color-selection {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 0 3px;
+  border: 1px solid #333;
+  cursor: pointer;
+}
+.instalments-box .flex-top-widget .color-selection-wrapper .color-selection.lightgreen {
+  background-color: #DAF7A6;
+}
+.instalments-box .flex-top-widget .color-selection-wrapper .color-selection.coral {
+  background-color: #FFA78D;
+}
+.instalments-box .flex-top-widget .color-selection-wrapper .color-selection.lightblue {
+  background-color: #D0E1FF;
+}
+.instalments-box select.instalments-options {
   margin-top: 20px;
   cursor: pointer;
-}
-.instalments-box .more-info {
-  cursor: pointer;
-  position: absolute;
-  right: 20px;
-  text-decoration: underline;
-  top: 20px;
-}
-.instalments-box .more-info:hover {
-  color: grey;
 }
 
 /* ================= Popup ================= */

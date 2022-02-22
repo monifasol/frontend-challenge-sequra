@@ -4,11 +4,11 @@ import InformationBox from './InformationBox';
 
 const API_URI = process.env.REACT_APP_API_URL;
 
-
 const Widget = ( {totalWithTax, widgetId} ) => {
 
   const [ instalmentsOptions, setInstalmentsOptions ] = useState([]);
   const [ selectedInstalment, setSelectedInstalment ] = useState({});
+  //const [ colorScheme, setColorScheme ] = useState('default');
     
   const priceElement = document.querySelector(`#${widgetId}`);
 
@@ -104,21 +104,28 @@ const Widget = ( {totalWithTax, widgetId} ) => {
 
       <div className='instalments-box'>
 
-        <span className="more-info" data-testid='moreInfoLink' onClick={ () => handleEventPopup(true) }>más info</span>
+        <div className='flex-top-widget'>
+          <label htmlFor='selectInstalmentOpt' className='label-select'>Págalo en</label>
+          
+          <div className='color-selection-wrapper'>
+            <div className='color-selection lightgreen' data-color='lightgreen'></div>
+            <div className='color-selection coral' data-color='coral'></div>
+            <div className='color-selection lightblue' data-color='lightblue'></div>
+          </div>
 
-        <div className='instalments-box-select'>
-          <label htmlFor='selectInstalmentOpt'>Págalo en</label>
-                    
-          <select className='instalments-options' id='selectInstalmentOpt' data-testid='selectInstalments' onChange={ (e) => handleChangeInstalmentOpt(e.target.value) }>
-            { instalmentsOptions.map( (option, i) => {
-              return (
-                <option value={option.instalment_count} key={i} data-testid="selectOption">
-                  {`${option.instalment_count} cuotas de ${option.instalment_amount.string}/mes`}
-                </option>
-              );
-            }) }                               
-          </select>
+          <span className="more-info" data-testid='moreInfoLink' onClick={ () => handleEventPopup(true) }>más info</span>
         </div>
+
+        <select className='instalments-options' id='selectInstalmentOpt' data-testid='selectInstalments' onChange={ (e) => handleChangeInstalmentOpt(e.target.value) }>
+          { instalmentsOptions.map( (option, i) => {
+            return (
+              <option value={option.instalment_count} key={i} data-testid="selectOption">
+                {`${option.instalment_count} cuotas de ${option.instalment_amount.string}/mes`}
+              </option>
+            );
+          }) }                               
+        </select>
+
       </div>
     </>
   );

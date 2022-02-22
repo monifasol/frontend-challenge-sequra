@@ -2,6 +2,8 @@ import React from 'react';
 
 const InformationBox = ( { selectedInstalment } ) => {
 
+  const monthlyFee = (selectedInstalment.instalment_amount && selectedInstalment.instalment_amount.string) || 0;
+  
   return (
     <div className='info-box'>
 
@@ -35,12 +37,12 @@ const InformationBox = ( { selectedInstalment } ) => {
 
       <p>
                 Has seleccionado pagar en {`${selectedInstalment.instalment_count} 
-                cuotas de ${selectedInstalment.instalment_amount && selectedInstalment.instalment_amount.string}/mes`}
+                cuotas de ${monthlyFee}/mes`}
       </p>
 
       <p>
                 Además, en el importe mostrado ya se incluye la cuota única mensual
-                de {`${selectedInstalment.instalment_fee && selectedInstalment.instalment_fee.string}/mes`}, por lo que no tendrás ninguna sorpresa.
+                de {`${monthlyFee}/mes`}, por lo que no tendrás ninguna sorpresa.
       </p>
 
     </div>
